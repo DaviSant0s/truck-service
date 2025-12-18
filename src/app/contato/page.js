@@ -1,3 +1,5 @@
+/* src/contato/page.js */
+
 'use client'; // ISSO ATIVA O CSR
 
 /* eslint-disable @next/next/no-img-element */
