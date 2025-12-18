@@ -1,0 +1,132 @@
+/* src/styles/layout.css */
+
+/* --- CONTAINER GERAL --- */
+header,
+main,
+.footer__main,
+.footer__bottom {
+  width: 100%;
+  max-width: 1129px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* --- HEADER --- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 77px;
+  margin: auto;
+}
+
+.header__nav {
+  display: flex;
+  gap: 46px;
+}
+
+.header__nav-item {
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.header__nav-item:hover {
+  background-color: #dddddd;
+}
+
+.header__cta-btn {
+  background-color: #4762ff;
+  appearance: none;
+  border: none;
+  color: white;
+  width: 179px;
+  height: 40px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.header__cta-btn:hover {
+  background-color: #384ed6;
+}
+
+/* --- FOOTER --- */
+.footer {
+  width: 100%;
+  background: linear-gradient(180deg, #1a1f2b 0%, #11151f 100%);
+  color: #ffffff;
+  padding: 70px 0 40px 0;
+  margin-top: 80px;
+}
+
+.footer__main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+.footer__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer__logo {
+  width: 160px;
+  filter: brightness(1.1);
+}
+
+.footer__links,
+.footer__contacts,
+.footer__social {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 180px;
+}
+
+.footer__links-title,
+.footer__contacts-title,
+.footer__social-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.footer__link,
+.footer__phone,
+.footer__contact-text,
+.footer__social-handle {
+  font-size: 15px;
+  color: #b8bfd3;
+  transition: color 0.3s ease;
+}
+
+.footer__link:hover,
+.footer__phone:hover,
+.footer__social-handle:hover {
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.footer__social-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer__bottom {
+  margin-top: 50px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  text-align: center;
+  padding-top: 20px;
+}
+
+.footer__copyright {
+  font-size: 14px;
+  color: #aab3c6;
+}

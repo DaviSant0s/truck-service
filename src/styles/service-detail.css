@@ -1,0 +1,52 @@
+.service-details-container {
+  padding: 40px;
+  max-width: 800px;
+}
+
+.service-details-not-found {
+  padding: 40px;
+  text-align: center;
+}
+
+.service-details-back-link {
+  text-decoration: underline;
+  color: #4762FF;
+}
+
+.service-details-title {
+  font-size: 48px;
+  margin-top: 20px;
+}
+
+.service-details-content {
+  margin-top: 30px;
+  display: flex;
+  gap: 40px;
+}
+
+.service-details-image {
+  width: 400px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.service-details-price {
+  font-size: 24px;
+  color: #4762FF;
+}
+
+.service-details-details {
+  margin-top: 20px;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.service-details-description {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #666;
+}
+
+.service-details-button {
+  margin-top: 30px;
+}

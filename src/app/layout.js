@@ -1,8 +1,16 @@
 /* src/layout.js */
 
+// Imports de CSS Organizados
+import './globals.css'; // Esse fica igual pois está na mesma pasta
+import '@/styles/layout.css'; // O @ aponta para src/
+import '@/styles/home.css';
+import '@/styles/contact.css';
+import '@/styles/services.css';
+import '@/styles/service-detail.css';
+
 /* eslint-disable @next/next/no-img-element */
 
-import './globals.css';
+// import './globals.css';
 import Link from 'next/link';
 
 export const metadata = {
@@ -28,13 +36,15 @@ export default function RootLayout({ children }) {
               Home
             </Link>
             <Link href="/servicos" className="header__nav-item">
-              Serviços
+              Services
             </Link>
             <Link href="/contato" className="header__nav-item">
-              Contato
+              Contact
             </Link>
           </nav>
-          <button className="header__cta-btn">Agendar</button>
+          <Link href="/contato">
+            <button className="header__cta-btn">Request a call</button>
+          </Link>
         </header>
 
         {children}
@@ -95,10 +105,10 @@ export default function RootLayout({ children }) {
 
           {/* Linha inferior */}
           <div className="footer__bottom">
-                <span className="footer__copyright">
-                    © 2025 Euro Truck Service. All rights reserved.
-                </span>
-            </div>
+            <span className="footer__copyright">
+              © 2025 Euro Truck Service. All rights reserved.
+            </span>
+          </div>
         </footer>
       </body>
     </html>
