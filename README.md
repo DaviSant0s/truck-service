@@ -1,40 +1,55 @@
-# Migração de Projeto: Euro Truck Service para Next.js
+# 🚚 Euro Truck Service - Migração e Modernização Frontend
 
-Este projeto consiste na migração de uma Landing Page institucional desenvolvida originalmente em HTML/CSS/JS para o framework **Next.js**. O objetivo foi aplicar conceitos de arquitetura desacoplada e utilizar estratégias de renderização adequadas para cada contexto.
+Este repositório contém o código-fonte do trabalho final da disciplina de Frontend, focado na migração de uma Landing Page legada (HTML/CSS/JS) para uma aplicação moderna utilizando **Next.js (App Router)**.
 
-## 📄 Estrutura e Renderização
+O projeto demonstra o domínio de estratégias de renderização híbrida (**SSG** e **CSR**), uso de **Rotas Dinâmicas** e arquitetura de componentes reutilizáveis.
 
-O projeto foi dividido em duas páginas principais, cada uma utilizando uma estratégia de renderização distinta para otimizar a experiência do usuário e o desempenho.
+---
 
-### 1. Página Inicial (`/`) - SSG (Static Site Generation)
-* **Conteúdo:** Apresentação da empresa, serviços, localização e galeria de fotos.
-* **Justificativa:** Como o conteúdo desta página é puramente informativo e não sofre alterações frequentes baseadas no usuário, optou-se pelo SSG. Isso permite que o HTML seja gerado durante o build, garantindo carregamento instantâneo, melhor SEO e menor custo de servidor, já que a página é servida via CDN como um arquivo estático.
+## 📋 Sobre o Projeto
 
-### 2. Página de Contato (`/contato`) - CSR (Client-Side Rendering)
-* **Conteúdo:** Formulário de contato interativo.
-* **Justificativa:** Esta página requer interação direta do usuário (inputs de dados, validação de formulário em tempo real e feedback visual via `alert`). Utilizamos a diretiva `'use client'`, permitindo o uso de Hooks do React (`useState`) para gerenciar o estado do formulário e processar o envio diretamente no navegador, evitando recarregamentos desnecessários da página.
+O **Euro Truck Service** é um site institucional para uma oficina especializada em manutenção de caminhões pesados. O objetivo da migração foi transformar um site estático monolítico em uma **Single Page Application (SPA)** performática, escalável e otimizada para SEO.
 
-## 📊 Análise Lighthouse (Comparativo)
+### Principais Evoluções na Versão Next.js:
+- **Arquitetura Desacoplada:** Separação clara entre dados, lógica de interface e estilo.
+- **Roteamento Avançado:** Uso do *File-system Routing* do Next.js.
+- **Otimização de Imagens:** Carregamento otimizado com componentes nativos (preparado).
+- **Estilização Modular:** CSS organizado por contexto (`home`, `services`, `layout`) para facilitar a manutenção.
 
-Abaixo, a comparação entre a versão original (HTML/CSS) e a versão otimizada em Next.js.
+---
 
-### Versão Original (HTML/CSS/JS)
-* **Performance:** [INSIRA A NOTA AQUI]
-* **Acessibilidade:** [INSIRA A NOTA AQUI]
-* **Boas Práticas:** [INSIRA A NOTA AQUI]
-* **SEO:** [INSIRA A NOTA AQUI]
+## 🚀 Estratégias de Renderização (Render Patterns)
 
-### Nova Versão (Next.js + Vercel)
-* **Performance:** [INSIRA A NOTA AQUI]
-* **Acessibilidade:** [INSIRA A NOTA AQUI]
-* **Boas Práticas:** [INSIRA A NOTA AQUI]
-* **SEO:** [INSIRA A NOTA AQUI]
+Para maximizar a performance e a experiência do usuário, foram escolhidas estratégias de renderização específicas para cada rota, conforme detalhado abaixo:
 
-**Análise dos Resultados:**
-A migração para SSG na página inicial eliminou o tempo de bloqueio de renderização do JavaScript, elevando significativamente a nota de Performance. O uso do componente `Link` do Next.js tornou a navegação entre as páginas instantânea (SPA feel), melhorando a experiência do usuário em comparação à navegação tradicional.
+### 1. Página Home (`/`)
+- **Estratégia:** **SSG (Static Site Generation)**.
+- **Implementação:** Utilizam *Server Components* padrão do Next.js.
+- **Justificativa Técnica:** Como o conteúdo é puramente informativo e raramente muda (landing page), o HTML é gerado inteiramente no momento do *build*. Isso garante o menor *Time to First Byte* (TTFB) possível, alta disponibilidade via CDN (Vercel) e indexação perfeita para SEO.
 
-## 🚀 Tecnologias Utilizadas
-* Next.js 14
-* React
-* CSS Modules / Global CSS
-* Vercel (Deploy)
+### 2. Página de Contato (`/contato`)
+- **Estratégia:** **CSR (Client-Side Rendering)**.
+- **Implementação:** Uso da diretiva `'use client'` e React Hooks (`useState`, `onSubmit`).
+- **Justificativa Técnica:** Esta página requer interatividade imediata do usuário (preenchimento de formulário, validação de inputs e feedback visual sem recarregamento). O CSR delega essa lógica para o navegador, proporcionando uma experiência fluida de SPA.
+
+### 3. Página de Serviços (`/servicos`)
+- **Estratégia:** SSG (Static Site Generation).
+- **Justificativa:** Como o catálogo de serviços raramente muda, optamos por pré-renderizar a página no build. Isso garante máxima performance (TTFB baixo) e melhor indexação (SEO), entregando HTML estático via CDN sem exigir processamento do servidor a cada acesso.
+
+### 3. ⭐ BÔNUS: Detalhes do Serviço (`/servicos/[id]`)
+- **Estratégia:** **SSG com Rotas Dinâmicas (Dynamic Routes)**.
+- **Implementação:** Utilização de `generateStaticParams` para pré-renderizar páginas estáticas baseadas em IDs de serviços.
+- **Justificativa Técnica:** Permite escalar o site para centenas de serviços mantendo a performance de site estático. O Next.js gera uma página HTML física para cada serviço (ex: `/servicos/1`, `/servicos/2`) durante o build.
+
+## Comparativo Lighthouse (Performance)
+
+| Métrica | Projeto Original (HTML/JS) | Migração Next.js (Vercel) | Análise |
+| :--- | :---: | :---: | :--- |
+| **Performance** | (Coloque aqui) | (Coloque aqui) | O uso do componente Image e a CDN da Vercel melhoraram o carregamento. |
+| **Acessibilidade** | (Coloque aqui) | (Coloque aqui) | A semântica do HTML5 foi mantida e aprimorada no JSX. |
+| **SEO** | (Coloque aqui) | (Coloque aqui) | O SSG garantiu que todas as meta-tags fossem servidas estaticamente. |
+
+
+
+## Conclusão
+A migração para Next.js permitiu desacoplar a interface, aproveitando o ecossistema React para organização de código, enquanto o uso híbrido de renderização entregou a melhor performance possível para cada caso de uso.

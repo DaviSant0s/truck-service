@@ -12,7 +12,7 @@ export default function ServicesPage() {
 
       <div className="services-page__grid">
         {services.map((service) => (
-          <div className="services-page-card">
+          <div key={service.id} className="services-page-card">
             <div className="services-page-card__content">
               <h3 className="services-page-card__title">
                 {service.title}

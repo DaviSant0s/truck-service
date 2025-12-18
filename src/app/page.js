@@ -2,6 +2,8 @@
 
 /* eslint-disable @next/next/no-img-element */
 
+// SSG (Landing Page)
+
 import Link from 'next/link';
 
 export default function Home() {

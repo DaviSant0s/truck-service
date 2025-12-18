@@ -4,6 +4,8 @@ import Link from 'next/link';
 
 /* eslint-disable @next/next/no-img-element */
 
+// SSG com Rotas Dinâmicas
+
 export async function generateStaticParams() {
   return services.map((service) => ({
     id: service.id.toString(),

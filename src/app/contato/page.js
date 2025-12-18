@@ -4,6 +4,8 @@
 
 /* eslint-disable @next/next/no-img-element */
 
+// CSR (Formulário interativo)
+
 import { useState } from 'react';
 import Link from 'next/link';
 
