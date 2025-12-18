@@ -43,13 +43,34 @@ Para maximizar a performance e a experiência do usuário, foram escolhidas estr
 
 ## Comparativo Lighthouse (Performance)
 
+### Página Home (`/`)
 | Métrica | Projeto Original (HTML/JS) | Migração Next.js (Vercel) | Análise |
 | :--- | :---: | :---: | :--- |
-| **Performance** | (Coloque aqui) | (Coloque aqui) | O uso do componente Image e a CDN da Vercel melhoraram o carregamento. |
-| **Acessibilidade** | (Coloque aqui) | (Coloque aqui) | A semântica do HTML5 foi mantida e aprimorada no JSX. |
-| **SEO** | (Coloque aqui) | (Coloque aqui) | O SSG garantiu que todas as meta-tags fossem servidas estaticamente. |
+| **Performance** | 98 | 97 | A pontuação manteve-se alta pois o HTML é entregue pronto (SSG). |
+| **Acessibilidade** | 97 | 98 | O uso de tags semânticas no JSX e o componente <Link> melhoraram a navegação por teclado. |
+| **SEO** | 91 | 100 | A geração estática garantiu que o título e a descrição fossem indexáveis instantaneamente, superando o projeto original. |
+
+### Página de Contato (`/contato`)
+| Métrica | Migração Next.js (Vercel) | Análise |
+| :--- | :---: | :--- |
+| **Performance** | 75 | Queda esperada devido ao CSR. O navegador precisou baixar e executar o JavaScript (use client) para montar o formulário interativo, aumentando o tempo de bloqueio (TBT). |
+| **Acessibilidade** | 98 | A estruturação correta dos labels e inputs no React garantiu a nota alta, independente da renderização. |
+| **SEO** | 100 | Mesmo sendo CSR, o Next.js gerou as meta-tags no servidor (via layout.js), garantindo SEO perfeito.|
+
+### Página de Serviços (`/servicos`)
+| Métrica | Migração Next.js (Vercel) | Análise |
+| :--- | :---: | :--- |
+| **Performance** | 100 | Como a página é puramente informativa e estática, o servidor entregou apenas HTML e CSS otimizados, resultando em Load instantâneo. |
+| **Acessibilidade** | 98 | Tags de imagem com atributos alt preenchidos e hierarquia de cabeçalhos correta (h1, h3). |
+| **SEO** | 100 | Conteúdo textual totalmente visível para os crawlers sem necessidade de execução de JavaScript. |
 
 
+### Detalhes do Serviço (`/servicos/[id]`)
+| Métrica | Migração Next.js (Vercel) | Análise |
+| :--- | :---: | :--- |
+| **Performance** | 100 | O uso de generateStaticParams permitiu que páginas dinâmicas se comportassem como estáticas no build, eliminando consultas ao banco de dados no momento do acesso. |
+| **Acessibilidade** | 98 | A semântica do HTML5 foi mantida e aprimorada no JSX. |
+| **SEO** | 100 | O SSG garantiu que todas as meta-tags fossem servidas estaticamente. |
 
 ## Conclusão
-A migração para Next.js permitiu desacoplar a interface, aproveitando o ecossistema React para organização de código, enquanto o uso híbrido de renderização entregou a melhor performance possível para cada caso de uso.
+Este projeto materializa uma arquitetura de frontend desacoplado ao isolar a interface desenvolvida em React/Next.js da lógica de fornecimento de dados. Esta independência permite que o frontend comunique com APIs via JSON/HTTP e realize deploys e escalabilidade de forma individual. Como resultado, obtemos um sistema mais rápido, escalável e fácil de manter, alinhado com as práticas de mercado para soluções de alta performance.
