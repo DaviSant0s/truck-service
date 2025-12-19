@@ -6,6 +6,18 @@ O projeto demonstra o domínio de estratégias de renderização híbrida (**SSG
 
 ---
 
+## 🔗 Links do Projeto
+* **Repositório:** [github.com/DaviSant0s/truck-service](https://github.com/DaviSant0s/truck-service)
+* **Deploy (Vercel):** [truck-service-seven.vercel.app](https://truck-service-seven.vercel.app/)
+
+---
+
+**Desenvolvido por:**
+* Antonio Davi Araújo dos Santos
+* Sintik de Souza Rodrigues
+
+---
+
 ## 📋 Sobre o Projeto
 
 O **Euro Truck Service** é um site institucional para uma oficina especializada em manutenção de caminhões pesados. O objetivo da migração foi transformar um site estático monolítico em uma **Single Page Application (SPA)** performática, escalável e otimizada para SEO.
@@ -14,7 +26,7 @@ O **Euro Truck Service** é um site institucional para uma oficina especializada
 - **Arquitetura Desacoplada:** Separação clara entre dados, lógica de interface e estilo.
 - **Roteamento Avançado:** Uso do *File-system Routing* do Next.js.
 - **Otimização de Imagens:** Carregamento otimizado com componentes nativos (preparado).
-- **Estilização Modular:** CSS organizado por contexto (`home`, `services`, `layout`) para facilitar a manutenção.
+- **Estilização Modular:** CSS organizado por contexto para facilitar a manutenção.
 
 ---
 
@@ -46,15 +58,15 @@ Para maximizar a performance e a experiência do usuário, foram escolhidas estr
 ### Página Home (`/`)
 | Métrica | Projeto Original (HTML/JS) | Migração Next.js (Vercel) | Análise |
 | :--- | :---: | :---: | :--- |
-| **Performance** | 98 | 97 | A pontuação manteve-se alta pois o HTML é entregue pronto (SSG). |
-| **Acessibilidade** | 97 | 98 | O uso de tags semânticas no JSX e o componente <Link> melhoraram a navegação por teclado. |
+| **Performance** | 98 | 97 | A estabilidade da nota deve-se ao SSG, que entrega o HTML pré-montado no build, mantendo o Time to First Byte (TTFB) extremamente baixo, similar ao estático puro. |
+| **Acessibilidade** | 97 | 98 | A migração para componentes React permitiu encapsular regras de acessibilidade de forma mais rigorosa que no HTML monolítico, e uso de tags semânticas no JSX e o componente <Link> melhoraram a navegação. |
 | **SEO** | 91 | 100 | A geração estática garantiu que o título e a descrição fossem indexáveis instantaneamente, superando o projeto original. |
 
 ### Página de Contato (`/contato`)
 | Métrica | Migração Next.js (Vercel) | Análise |
 | :--- | :---: | :--- |
 | **Performance** | 75 | Queda esperada devido ao CSR. O navegador precisou baixar e executar o JavaScript (use client) para montar o formulário interativo, aumentando o tempo de bloqueio (TBT). |
-| **Acessibilidade** | 98 | A estruturação correta dos labels e inputs no React garantiu a nota alta, independente da renderização. |
+| **Acessibilidade** | 98 | O gerenciamento de estado (useState) garantiu feedback visual imediato nos inputs e labels, melhorando a experiência de uso (UX) e acessibilidade. |
 | **SEO** | 100 | Mesmo sendo CSR, o Next.js gerou as meta-tags no servidor (via layout.js), garantindo SEO perfeito.|
 
 ### Página de Serviços (`/servicos`)
@@ -62,7 +74,7 @@ Para maximizar a performance e a experiência do usuário, foram escolhidas estr
 | :--- | :---: | :--- |
 | **Performance** | 100 | Como a página é puramente informativa e estática, o servidor entregou apenas HTML e CSS otimizados, resultando em Load instantâneo. |
 | **Acessibilidade** | 98 | Tags de imagem com atributos alt preenchidos e hierarquia de cabeçalhos correta (h1, h3). |
-| **SEO** | 100 | Conteúdo textual totalmente visível para os crawlers sem necessidade de execução de JavaScript. |
+| **SEO** | 100 | O conteúdo textual da lista foi gerado estaticamente, tornando-o 100% legível para buscadores sem rendering budget extra. |
 
 
 ### Detalhes do Serviço (`/servicos/[id]`)
